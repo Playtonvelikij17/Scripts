@@ -1,6 +1,3 @@
--- pls dont steal my scripts :)
--- by: delovoi_chelovek007
-
 local Players = game:GetService("Players")
 local StarterGui = game:GetService("StarterGui")
 local UserInputService = game:GetService("UserInputService")
@@ -12,9 +9,7 @@ local Mouse = LocalPlayer:GetMouse()
 local TableBrainrots = {
 	"Los Candies",
 	"Los Jolly Combinasionas",
-	"Rocco Disco",
-  "Money Money Reindeer",
-  "25",
+	"",
 	"Naughty Naughty",
 	"Bunnyman",
 	"Triplito Tralaleritos",
@@ -223,7 +218,7 @@ ButtonCloseFrame.Image = "http://www.roblox.com/asset/?id=11622919444"
 
 if UserInputService.KeyboardEnabled then
 	PlayerDevice = "PC"
-	MainFrame.Visible = false
+	MainFrame.Visible = true
 else
 	PlayerDevice = "Mobile"
 	MainFrame.Visible = true
@@ -318,9 +313,6 @@ end
 local function UseQuantumCloner()
 	local Find_QuantumCloner = LocalPlayer.Backpack:FindFirstChild("Quantum Cloner") or LocalPlayer.Character:FindFirstChild("Quantum Cloner")
 
-	if PlayerDevice == "PC" then
-		StarterGui:SetCore("SendNotification", {Title = "???", Text = "Quantum Cloner Used!", Duration = 1})
-	end
 
 	if Find_QuantumCloner then
 		local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
@@ -345,6 +337,10 @@ local function UseQuantumCloner()
 			end
 		end)
 	end	
+
+	if PlayerDevice == "PC" then
+		StarterGui:SetCore("SendNotification", {Title = "???", Text = "Quantum Cloner Used!", Duration = 1})
+	end
 end
 
 ButtonJumpBoost.MouseButton1Click:Connect(function()
@@ -365,9 +361,9 @@ ButtonSpeedBoost.MouseButton1Click:Connect(function()
 		ButtonSpeedBoost.Text = "Speed Boost: ON"
 		Is_Massles = true
 		RenameTextButton(ButtonMassles, "    Massles: ON    ")
-		
+
 		IsJumpBoost = false
-		RenameTextButton(ButtonSpeedBoost, "Jump Boost: OFF")
+		RenameTextButton(ButtonJumpBoost, "Jump Boost: OFF")
 	else
 		ButtonSpeedBoost.Text = "Speed Boost: OFF"
 	end
@@ -411,15 +407,13 @@ ButtonUseMegaStun.MouseButton1Click:Connect(function()
 	UseMegaStun()
 end)
 
-MainDrag.InputBegan:Connect(function(Input:InputObject)
+MainDrag:WaitForChild("HitBoxTouch").InputBegan:Connect(function(Input:InputObject)
 	if UserInputService.KeyboardEnabled then
 		if Input.UserInputType == Enum.UserInputType.MouseButton1 then
-			Is_Dragged_ButtonToggle = false
 			Is_Dragged_Gui = true
 		end
 	else
 		if Input.UserInputType == Enum.UserInputType.Touch then
-			Is_Dragged_ButtonToggle = false
 			Is_Dragged_Gui = true
 		end
 	end
@@ -521,7 +515,7 @@ UserInputService.InputBegan:Connect(function(Input, IsTyping)
 		if IsJumpBoost then
 			IsSpeedBoost = false
 			RenameTextButton(ButtonSpeedBoost, "Speed Boost: OFF")
-			
+
 			RenameTextButton(ButtonJumpBoost, "Jump Boost: ON")
 		else
 			RenameTextButton(ButtonJumpBoost, "Jump Boost: OFF")
@@ -544,7 +538,7 @@ UserInputService.InputBegan:Connect(function(Input, IsTyping)
 
 			Is_Massles = true
 			RenameTextButton(ButtonMassles, "    Massles: ON    ")
-			
+
 			IsJumpBoost = false
 			RenameTextButton(ButtonJumpBoost, "Jump Boost: OFF")
 		else
@@ -591,11 +585,11 @@ RunService.RenderStepped:Connect(function()
 	Hrp = Character:WaitForChild("HumanoidRootPart")
 
 	if Is_Dragged_Gui then
-		MainFrame.Position = UDim2.fromOffset(Mouse.X - 195, Mouse.Y)
-	end
-
-	if Is_Dragged_ButtonToggle then
-		MainButtonToggle.Position = UDim2.fromOffset(Mouse.X - 20, Mouse.Y - 20)
+		if PlayerDevice == "PC" then
+			MainFrame.Position = UDim2.fromOffset(Mouse.X - 195, Mouse.Y)
+		elseif PlayerDevice == "Mobile" then
+			MainFrame.Position = UDim2.fromOffset(Mouse.X - 35, Mouse.Y)
+		end
 	end
 
 	if Humanoid and IsJumpBoost then
@@ -850,3 +844,5 @@ task.spawn(function()
 		end
 	end
 end)
+
+-- hello?
