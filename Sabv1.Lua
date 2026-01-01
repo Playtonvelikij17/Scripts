@@ -218,7 +218,7 @@ ButtonCloseFrame.Image = "http://www.roblox.com/asset/?id=11622919444"
 
 if UserInputService.KeyboardEnabled then
 	PlayerDevice = "PC"
-	MainFrame.Visible = true
+	MainFrame.Visible = false
 else
 	PlayerDevice = "Mobile"
 	MainFrame.Visible = true
