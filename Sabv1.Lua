@@ -145,19 +145,23 @@ local function Notifications()
 		, Text = "Press to Z for toggle Massles!", Duration = 3.5})
 	task.delay(0.5, function()
 		StarterGui:SetCore("SendNotification", {Title = "???"
-			, Text = "Press to F for use  auto Quantum Cloner!", Duration = 3.5})
+			, Text = "Press to B for toggle Speed Boost!", Duration = 3.5})
 		task.delay(0.5, function()
 			StarterGui:SetCore("SendNotification", {Title = "???"
-				, Text = "Press to C for activate MegaStun!", Duration = 3.5})
+				, Text = "Press to F for use auto Quantum Cloner!", Duration = 3.5})
 			task.delay(0.5, function()
 				StarterGui:SetCore("SendNotification", {Title = "???"
-					, Text = "Press to V for toggle Esps!", Duration = 3.5})
+					, Text = "Press to C for activate MegaStun!", Duration = 3.5})
 				task.delay(0.5, function()
 					StarterGui:SetCore("SendNotification", {Title = "???"
-						, Text = "Press to N for toggle Anti Knockback!", Duration = 3.5})
+						, Text = "Press to V for toggle Esps!", Duration = 3.5})
 					task.delay(0.5, function()
 						StarterGui:SetCore("SendNotification", {Title = "???"
-							, Text = "Press to X for toggle Jump Boost!", Duration = 3.5})
+							, Text = "Press to N for toggle Anti Knockback!", Duration = 3.5})
+						task.delay(0.5, function()
+							StarterGui:SetCore("SendNotification", {Title = "???"
+								, Text = "Press to X for toggle Jump Boost!", Duration = 3.5})
+						end)
 					end)
 				end)
 			end)
@@ -196,6 +200,7 @@ local Activated_WalkSpeed = 30
 --local CheatGui = game.StarterGui:WaitForChild("NewGuiStealABrainrotGui")
 local CheatGui = game:GetObjects("rbxassetid://97629701367484")[1]
 CheatGui.Parent = LocalPlayer.PlayerGui
+
 
 local MainFrame = CheatGui:WaitForChild("Main")
 local MainScrolls = MainFrame:WaitForChild("MainScrolls")
@@ -583,7 +588,9 @@ RunService.RenderStepped:Connect(function()
 	Character = LocalPlayer.Character
 	Humanoid = Character:WaitForChild("Humanoid")
 	Hrp = Character:WaitForChild("HumanoidRootPart")
-
+	
+	workspace.CurrentCamera.FieldOfView = 70
+	
 	if Is_Dragged_Gui then
 		if PlayerDevice == "PC" then
 			MainFrame.Position = UDim2.fromOffset(Mouse.X - 195, Mouse.Y)
@@ -844,5 +851,3 @@ task.spawn(function()
 		end
 	end
 end)
-
--- hello?
